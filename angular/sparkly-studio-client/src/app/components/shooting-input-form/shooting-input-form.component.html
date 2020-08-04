@@ -1,0 +1,67 @@
+<div class="settings">
+    <h3><strong>SETTINGS</strong></h3>
+    <h4>Please complete the following data</h4>
+    <form class="settings__form" #f="ngForm" [formGroup]="settingsForm" (ngSubmit)="onSubmit(f)">
+        <div>
+            <p>Room</p>
+            <mat-form-field appearence="fill">
+                <mat-label [ngStyle]="{'color':getLabelColor(roomWidth)}">Width</mat-label>
+                <input matInput type="number" formControlName="roomWidth" (change)="emitBoard()">
+                <mat-error *ngIf="roomWidth.invalid && !roomWidth.hasError('max')">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="roomWidth.hasError('max')">Room should be less than 1250</mat-error>
+            </mat-form-field>
+            <mat-form-field appearence="fill">
+                <mat-label [ngStyle]="{'color':getLabelColor(roomHeight)}">Height</mat-label>
+                <input matInput type="number"  formControlName="roomHeight" (change)="emitBoard()">
+                <mat-error *ngIf="roomHeight.invalid && !roomWidth.hasError('max')">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="roomHeight.hasError('max')">Room should be less than 1250</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <p>Shooter</p>
+            <mat-form-field appearence="fill">
+                <mat-label [ngStyle]="{'color':getLabelColor(shooterXPos)}">Position X</mat-label>
+                <input matInput type="number" formControlName="shooterXPos" (change)="emitShooter()">
+                <mat-error *ngIf="shooterXPos.invalid && !shooterXPos.hasError('invalidShooterX')">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="shooterXPos.hasError('invalidShooterX')">Shooter should be inside of the room</mat-error>
+            </mat-form-field>
+            <mat-form-field appearence="fill">
+                <mat-label [ngStyle]="{'color':getLabelColor(shooterYPos)}" >Position Y</mat-label>
+                <input matInput type="number" formControlName="shooterYPos" (change)="emitShooter()">
+                <mat-error *ngIf="shooterYPos.invalid && !shooterYPos.hasError('invalidShooterY')">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="shooterYPos.hasError('invalidShooterY')">Shooter should be inside of the room</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <p>Target</p>
+            <mat-form-field appearence="fill">
+                <mat-label [ngStyle]="{'color':getLabelColor(targetXPos)}" >Position X</mat-label>
+                <input matInput type="number" formControlName="targetXPos" (change)="emitTarget()"> 
+                <mat-error *ngIf="targetXPos.invalid && !targetXPos.hasError('invalidTargetX') && !targetXPos.hasError('targetOverShooter') ">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="targetXPos.hasError('invalidTargetX')">Target should be inside of the room</mat-error>
+                <mat-error *ngIf="targetXPos.hasError('targetOverShooter')">Target's position should be different from Shooter's position</mat-error>
+            </mat-form-field>
+            <mat-form-field appearence="fill">
+                <mat-label [ngStyle]="{'color':getLabelColor(targetYPos)}" >Position Y</mat-label>
+                <input matInput type="number" formControlName="targetYPos" (change)="emitTarget()">
+                <mat-error *ngIf="targetYPos.invalid && !targetYPos.hasError('invalidTargetY') && !targetYPos.hasError('targetOverShooter')">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="targetYPos.hasError('invalidTargetY')">Target should be inside of the room</mat-error>
+                <mat-error *ngIf="targetYPos.hasError('targetOverShooter')">Target's position should be different from Shooter's position</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <p>Distance</p>
+            <mat-form-field appearence="fill">
+                <input matInput type="number" formControlName="distance" (change)="emitDistance()">
+                <mat-error *ngIf="distance.invalid && !distance.hasError('min') && !distance.hasError('max')">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="distance.hasError('min')">Distance should be bigger than 1</mat-error>
+                <mat-error *ngIf="distance.hasError('max')">Distance should be less than 10000</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <button *ngIf="!isLoading" class="rounded" [disabled]="f.invalid">Submit</button>
+            <app-spinner *ngIf="isLoading"></app-spinner>
+        </div>
+    </form>
+</div>
+

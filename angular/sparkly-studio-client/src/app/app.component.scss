@@ -1,0 +1,35 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+.container {
+    background: linear-gradient(170deg, rgb(255,229,0) 50%, white 50%);
+    height: calc(100vh - 70px);
+    &__info {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .data {
+        margin: 20px;
+    }
+}
+
+app-shooting-input-form {
+    flex-basis: 25%;
+}
+
+app-board {
+    flex-basis: 70%;
+}
+
+// Devices
+@media only screen and (max-width: 1000px) {
+    .container {
+        &__info {
+            flex-direction: column-reverse;
+        }
+    }
+    app-shooting-input-form,
+    app-board {
+        width: 100%;
+    }
+}

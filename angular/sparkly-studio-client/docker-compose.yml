@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  sparkly-studio-client:
+    image: sparkly-studio-client
+    build: .
+    ports:
+      - 4200

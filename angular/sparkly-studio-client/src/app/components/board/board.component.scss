@@ -1,0 +1,120 @@
+@import '../../../styles/variables';
+
+.board-container,
+.board-holder {
+    width: 100%;
+}
+
+
+.board {
+    width: 100%;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 5px 10px 8px #888888;
+    border-radius: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    h2,
+    h3,
+    h4 {
+        letter-spacing: 1px;
+    }
+    h3 {
+        color: grey;
+        font-weight: 500;
+    }
+    h4 {
+        font-weight: 500;
+        color: $grey;
+        font-size: 14px;
+    }
+    &__details {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        background-color: #f9faf9;
+        height: 30x;
+        margin-bottom: 30px;
+        border-radius: 20px;
+        padding: 20px;
+        &--item{
+            display: flex;
+            padding-right: 30px;
+            flex-direction: column;
+            font-size: 12px;
+            color: $grey;
+        }
+        &--row{
+            display: flex;
+            padding-right: 30px;
+            flex-direction: row;
+            :first-child{
+                padding-right:15px;
+            }
+        }
+        button {
+            width: 140px;
+            height: 40px;
+            padding: 8px 12px;
+            margin: auto;
+            border-radius: 20px;
+            outline: none;
+            border: none;
+            background-color: rgb(255,229,0);
+            color: $brandBlack;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+    }
+
+    &__results {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        width: 100%;
+        margin-top: 20px;
+
+        &--item{
+            margin-bottom: 10px;
+            flex-basis: 20%;
+            flex-shrink: 0;
+            span {
+                color: $grey;
+            }
+        }
+    }
+    &__results-title {
+        display: flex;
+        h3 {
+            margin-right: 20px;
+        }
+    }
+    hr.custom {
+        border-top: 1px solid #f9faf9;
+    }
+}
+
+// Angular material overrides
+::ng-deep {
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb,
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+        background-color: $brandYellow;
+    }
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+        background-color: $brandBlack;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .board {
+        margin-top: 0;
+        box-shadow: none;
+        border-radius: 0;
+        &__results {
+            &--item{
+                margin-right: 10px;    
+            }
+        }
+    }
+}

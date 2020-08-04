@@ -1,0 +1,86 @@
+@import '../../../styles/variables';
+
+.settings {
+    width: 100%;
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 5px 10px 8px #888888;
+    border-radius: 20px;
+    box-sizing: border-box;
+    h3 {
+        margin: 0;
+    }
+    h4 {
+        margin: 8px 0 16px;
+        font-weight: 300;
+        font-size: 16px;
+    }
+    h3 {
+        letter-spacing: $subLetterSpacing;
+        font-size: 18px;
+    }
+    &__form {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        div {
+            flex-basis: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            // Angular material overrides
+            .mat-form-field {
+                margin-bottom: 0 !important ;
+            }
+            p {
+                flex-basis: 100%;
+                font-size: 16px;
+                font-weight: 600;
+                color: $grey;
+            }
+            .mat-form-field {
+                width: 45%;
+                margin-bottom: 30px;
+            }
+            .rounded {
+                border-radius: 20px;
+                padding: 10px 60px;
+                border: none;
+                outline: none;
+                color: white;
+                font-weight: 500;
+                font-size: 17px;
+                background-color: $brandBlack;
+                cursor: pointer;
+                letter-spacing: 1px;
+                &:disabled{
+                    background-color: $grey;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .settings {
+        box-shadow: none;
+        border-radius: 0;
+        margin-top: 0;
+        border-top: 1px solid $brandBlack;
+
+        &__form {
+            div {
+                flex-basis: 100%;
+            }
+        }
+
+        .rounded {
+            margin: 30px auto;
+            padding-top: 20px;
+            width: 100%;
+        }
+    }
+}

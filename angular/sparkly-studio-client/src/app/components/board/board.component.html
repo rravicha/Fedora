@@ -1,0 +1,17 @@
+<div *ngIf="dataArrived" class="board">
+    <div class="board__results-title">
+        <h3>
+            <b>RESULTS</b>
+        </h3>
+    </div>
+    <h2 *ngIf="numberOfPossibleDirections > 1">Found ({{numberOfPossibleDirections.toString()}}) possible directions</h2>
+    <h2 *ngIf="numberOfPossibleDirections === 1">Found ({{numberOfPossibleDirections.toString()}}) possible direction</h2>
+    <h2 *ngIf="numberOfPossibleDirections === 0">No possible directions found</h2>
+    <hr class="custom">
+    <div class="board__results">
+        <div class="board__results--item" *ngFor="let angle of angles; let i = index">
+            <span>Angle #{{i + 1}}:</span> <b>&nbsp;{{angle}}º</b> <!-- Do not remove whitespace after the opening <b> tag, thank you. -->
+        </div>
+        <div id="sparkly-sketch"></div>
+    </div>
+</div>

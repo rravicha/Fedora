@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  sparkly-studio-client:
+    image: sparkly-studio-client
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4200
